@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
         },
-        //  media: {
-        //  type: DataTypes.STRING,
-        //  allowNull: true     
-        //  },
+        media: {
+        type: DataTypes.STRING,
+        allowNull: true     
+        },
         //  comments: {
         //  type : DataTypes.STRING,
         //  allowNull: true    

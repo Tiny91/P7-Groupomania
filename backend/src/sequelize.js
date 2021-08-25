@@ -1,8 +1,8 @@
 //fichier de config et de synchro sequelize/BDD
 
 const {Sequelize,DataTypes} = require('sequelize');
-const ArticleModel = require('../models/article');
-const UserModel = require('../models/user');
+const ArticleModel = require('./models/article');
+const UserModel = require('./models/user');
 
 //connexion avec BDD via . (verif connexion bdd ok)
 //---------------------------

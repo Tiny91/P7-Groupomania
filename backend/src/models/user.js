@@ -6,21 +6,19 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
         },
-        name : {
+        pseudo : {
         type: DataTypes.STRING,
+        unique: {msg: "ce pseudo est déjà utilisé"},
         allowNull: false 
         },
         email: {
         type: DataTypes.STRING,
+        unique: {msg: "cet email est déjà utilisé"},
         allowNull: false
         },
         password: {
         type: DataTypes.STRING,
         allowNull: false     
         },
-    }, {
-        timestamps: true,
-        createdAt: 'published',
-        updatedAt: false,
-        }
+    }, 
 )}

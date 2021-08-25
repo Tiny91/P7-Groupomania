@@ -1,10 +1,10 @@
-const { Article }  = require ('../sequelize')
+const { Article }  = require ('../../sequelize')
 
 module.exports = (app) => {
     app.post('/api/articles', (req, res) => {
       Article.create(req.body)
         .then(article => {
-          const message = `L article ${req.body.title} a bien été crée.`
+          const message = `L article ${req.body.title} a bien été créé.`
           res.json({ message, data: article })
         })
         .catch(error =>{
