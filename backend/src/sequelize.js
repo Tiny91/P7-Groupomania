@@ -1,8 +1,10 @@
 //fichier de config et de synchro sequelize/BDD
 
 const {Sequelize,DataTypes} = require('sequelize');
-const ArticleModel = require('./models/article');
+const PostModel = require('./models/post');
 const UserModel = require('./models/user');
+const CommentModel = require ('./models/comments');
+const comments = require('./models/comments');
 
 //connexion avec BDD via . (verif connexion bdd ok)
 //---------------------------
@@ -17,14 +19,25 @@ const UserModel = require('./models/user');
 //------------------------------
 
 // instancier les tables
-const Article = ArticleModel(sequelize, DataTypes);
+const Post = PostModel(sequelize, DataTypes);
 const User = UserModel (sequelize, DataTypes)
+const Comment = CommentModel (sequelize, DataTypes)
 
 const initDb = ( ) => {
     return sequelize.sync({alter:true})
     .then (_ => 
-        console.log('base synchro'))
+        console.log('bases synchro'))
 }
+//association posts/user
+User.hasMany(Post);
+Post.belongsTo(User);
 
+// association comments/post
+Post.hasMany(Comment);
+Comment.belongsTo(Post);
 
-module.exports = { initDb, Article }
+// association comments/user
+User.hasMany(Comment);
+Comment.belongsTo(User);
+
+module.exports = { initDb, Post, User, Comment }

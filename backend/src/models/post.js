@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('Article', {
+    return sequelize.define('Post', {
         id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -17,11 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         media: {
         type: DataTypes.STRING,
         allowNull: true     
-        },
-        //  comments: {
-        //  type : DataTypes.STRING,
-        //  allowNull: true    
-        // },
+        },        
     }, {
         timestamps: true,
         createdAt: 'published',
