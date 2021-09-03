@@ -15,7 +15,7 @@ module.exports = (app) => {
       res.json({msg, data:user})
     })
     .catch(error => {
-      const msg = 'réeesayez plus tard'
+      const msg = 'réessayez plus tard'
       res.status(500).json ({msg, data:error})
     })
   })
