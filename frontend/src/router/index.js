@@ -21,14 +21,29 @@ const routes = [
     component: () => import(/* webpackChunkName: "posts" */ '../views/Posts.vue')
   },
   {
-    path: '/OnePost',
-    name: 'OnePost',
-    component: () => import(/* webpackChunkName: "post" */ '../views/OnePost.vue')
+    path: '/Profil',
+    name: 'Profil',
+    component: () => import(/* webpackChunkName: "profil" */ '../views/Profil.vue')
   },
   {
-    path: '/Inscription',
-    name: 'Inscription',
-    component: () => import(/* webpackChunkName: "inscription" */ '../views/Inscription.vue')
+    path: '/SignUp',
+    name: 'SignUp',
+    component: () => import(/* webpackChunkName: "SignUp" */ '../components/SignUp.vue')
+  },
+  {
+    path: '/DeletePost',
+    name: 'DeletePost',
+    component: () => import(/* webpackChunkName: "DeletePost" */ '../components/posts/DeletePost.vue')
+  },
+  {
+    path: '/ModifyPost',
+    name: 'ModifyPost',
+    component: () => import(/* webpackChunkName: "ModifyPost" */ '../components/posts/ModifyPost.vue')
+  },
+  {
+    path: '/OnePost',
+    name: 'OnePost',
+    component: () => import(/* webpackChunkName: "OnePost" */ '../views/OnePost.vue')
   }
 ]
 

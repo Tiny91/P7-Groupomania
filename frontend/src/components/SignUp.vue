@@ -12,7 +12,7 @@
       <label for="password">Votre mot de passe: </label>
       <input id="password" v-model="password" type="text" name="password" />
     </p>
-    <button type="submit">Envoyer</button>
+    <button type="submit" class="btn">Envoyer</button>
   </form>
 </template>
 
@@ -37,7 +37,7 @@ export default {
           email: this.email,
           password: this.password
         }
-        fetch('http://localhost:3000/api/users/signup', {
+        fetch('http://localhost:3000/api/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -54,14 +54,15 @@ export default {
 
 <style>
 input {
-  height: 20px;
+  height: 10px;
   margin: 10px;
   padding: 10px
 }
 button {
   height: 30px;
+  width: 170px;
   padding: 5px 15px;
-  background-color: rgb(214, 214, 238);
+  background-color: rgb(211, 211, 243);
   border-radius:15px
 }
 </style>

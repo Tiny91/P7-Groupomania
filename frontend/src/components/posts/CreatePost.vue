@@ -40,11 +40,13 @@ export default {
         this.post = {
           content: this.content,
           title: this.title,
-          media: this.media
+          media: this.media,
+          UserId: localStorage.getItem('userId')
         }
         fetch('http://localhost:3000/api/posts', {
           method: 'POST',
           headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(this.post)

@@ -1,20 +1,26 @@
 <template>
-    <img alt="Groupomania"  src='../assets/groupomania.png' />
+  <div>
+    <h3>Mon actualité</h3>
     <Post v-for="post of posts"
     :key="post.id"
-    :id="post.id"
     :title="post.title"
     :content="post.content"
-    :media="post.media"
-    ></Post>
+    >
+    </Post>
+    <div>
+        <CreatePost></CreatePost>
+    </div>
+  </div>
+
 </template>
 
 <script>
-
+import CreatePost from '../components/posts/CreatePost.vue'
 import Post from '../components/posts/Post.vue'
 export default {
   components: {
-    Post
+    Post,
+    CreatePost
   },
   data () {
     return {
@@ -22,7 +28,8 @@ export default {
     }
   },
   created () {
-    fetch('http://localhost:3000/api/posts',
+    const id = localStorage.getItem('userId')
+    fetch(`http://localhost:3000/api/all/${id}`,
       {
         headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
       })
@@ -30,6 +37,7 @@ export default {
       .then(response => { this.posts = response })
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
