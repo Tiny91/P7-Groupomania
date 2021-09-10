@@ -1,11 +1,11 @@
-const { Post } = require('../../sequelize')
+const { Comment } = require('../../sequelize')
 const auth = require ('../../middleware/auth')
   
  module.exports = (app) => {
-    app.get('/api/all/:id', auth, (req, res) => {
-    Post.findAll({where: {UserId: req.params.id}})
-        .then(userPosts => {
-        res.json(userPosts)
+    app.get('/api/comments/all/:id', (req, res) => {
+    Comment.findAll({where: {UserId: req.params.id}})
+        .then(userComments => {
+        res.json(userComments)
         })
         .catch(error => {
         const message = "la liste n'a pas pu être récupérée, rééssayez plus tard"

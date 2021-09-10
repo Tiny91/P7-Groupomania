@@ -3,8 +3,8 @@
 const {Sequelize,DataTypes} = require('sequelize');
 const PostModel = require('./models/post');
 const UserModel = require('./models/user');
-const CommentModel = require ('./models/comments');
-const comments = require('./models/comments');
+const CommentModel = require ('./models/comment');
+const comments = require('./models/comment');
 
 //connexion avec BDD via . (verif connexion bdd ok)
 //---------------------------

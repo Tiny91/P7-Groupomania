@@ -17,7 +17,8 @@ module.exports = (app) => {
         }
         res.status(200).json({
           pseudo: user.pseudo,
-          userId: user.id,
+          userId: user.id,          
+          admin: user.isAdmin,
           token: jwt.sign(
             {userId : user.id},`${process.env.PRIVATEKEY}`,{expiresIn: "6h"}
             )
