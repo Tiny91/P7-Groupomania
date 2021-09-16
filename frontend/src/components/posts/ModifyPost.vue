@@ -9,37 +9,38 @@
         <label for="content">content </label>
         <input id="content" v-model="content" type="text" name="content" />
       </p>
-      <p>
-        <label for="media"> media </label>
-        <input id="media" v-model="media" type="text" name="media" />
-      </p>
       <button type="submit">Envoyer</button>
+      <div v-show="isInvalid" class="text-danger" >
+            {{errorMessage}}
+</div>
     </form>
   </div>
 </template>
 
 <script>
+import router from '../../router'
 export default {
   name: 'ModifyPost',
   data () {
     return {
       title: '',
       content: '',
-      media: ''
+      isInvalid: false,
+      errorMessage: ''
     }
   },
   methods: {
     modify () {
       if (this.content === '' || this.title === '') {
-        console.log('champ requis')
-      } else {
+        this.isInvalid = true
+        this.errorMessage = 'merci de compléter les champs'
+      } else if (localStorage.getItem('PostUserId') === localStorage.getItem('UserId') || localStorage.getItem('Admin') === 'true') {
         this.post = {
           content: this.content,
           title: this.title,
-          media: this.media,
-          UserId: localStorage.getItem('userId')
+          UserId: localStorage.getItem('UserId')
         }
-        const id = localStorage.getItem('id')
+        const id = localStorage.getItem('PostId')
         fetch(`http://localhost:3000/api/posts/${id}`, {
           method: 'PUT',
           headers: {
@@ -50,10 +51,15 @@ export default {
         })
           .then(res => res.json())
           .then(() => console.log(`article ${this.title} modifié`))
+        router.push({ path: 'Posts' })
+      } else {
+        this.isInvalid = true
+        this.errorMessage = 'vous n êtes pas autorisé à modifier ce post'
       }
     }
   }
 }
+
 </script>
 
 <style>

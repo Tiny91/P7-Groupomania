@@ -26,9 +26,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "profil" */ '../views/Profil.vue')
   },
   {
+    path: '/Admin',
+    name: 'Admin',
+    component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue')
+  },
+  {
+    path: '/CommentsByPost',
+    name: 'CommentsByPost',
+    component: () => import(/* webpackChunkName: "CommentsByPost" */ '../views/CommentsByPost.vue')
+  },
+  {
     path: '/SignUp',
     name: 'SignUp',
-    component: () => import(/* webpackChunkName: "SignUp" */ '../components/SignUp.vue')
+    component: () => import(/* webpackChunkName: "SignUp" */ '../components/users/SignUp.vue')
+  },
+  {
+    path: '/DeleteUser',
+    name: 'DeleteUser',
+    component: () => import(/* webpackChunkName: "DeleteUser" */ '../components/users/DeleteUser.vue')
   },
   {
     path: '/DeletePost',
@@ -41,8 +56,18 @@ const routes = [
     component: () => import(/* webpackChunkName: "ModifyPost" */ '../components/posts/ModifyPost.vue')
   },
   {
+    path: '/addComment',
+    name: 'addComment',
+    component: () => import(/* webpackChunkName: "addComment" */ '../components/Comments/AddComment.vue')
+  },
+  {
     path: '/OnePost',
     name: 'OnePost',
+    component: () => import(/* webpackChunkName: "OnePost" */ '../views/OnePost.vue')
+  },
+  {
+    path: '/OnePost/:id',
+    name: 'OnePost/:id',
     component: () => import(/* webpackChunkName: "OnePost" */ '../views/OnePost.vue')
   }
 ]

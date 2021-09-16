@@ -1,34 +1,30 @@
 <template>
-  <div>
-    <div class="block-post">
-      <h3>Créer un post</h3>
-      <form @submit="create">
-    <p>
-      <label for="title">title </label>
-      <input id="title" v-model="title" type="text" name="title" />
-    </p>
-    <p>
-      <label for="content">content </label>
-      <input id="content" v-model="content" type="text" name="content" />
-    </p>
-    <p>
-      <label for="media"> media </label>
-      <input id="media" v-model="media" type="text" name="media" />
-    </p>
-    <button type="submit">Envoyer</button>
-  </form>
-    </div>
+  <div class="block-post">
+    <h3>Créer un post</h3>
+    <form @submit="create" class=" col-5 jumbotron">
+      <p class="col-auto">
+        <label for="title">title </label>
+        <input id="title" v-model="title" type="text" name="title" class="form-control"
+         />
+      </p>
+      <p class="col-auto">
+        <label for="content">content </label>
+        <input id="content" v-model="content" type="text" name="content" class="form-control" rows="3" />
+      </p>
+      <button type="submit">Envoyer</button>
+    </form>
   </div>
 </template>
 
 <script>
+import router from '../../router'
 export default {
   name: 'CreatePost',
   data () {
     return {
       title: '',
       content: '',
-      media: ''
+      UserId: ''
     }
   },
   methods: {
@@ -40,8 +36,7 @@ export default {
         this.post = {
           content: this.content,
           title: this.title,
-          media: this.media,
-          UserId: localStorage.getItem('userId')
+          UserId: localStorage.getItem('UserId')
         }
         fetch('http://localhost:3000/api/posts', {
           method: 'POST',
@@ -54,9 +49,11 @@ export default {
           .then(res => res.json())
           .then(() => console.log(`article ${this.title} créé`))
       }
+      router.push({ path: 'Posts' })
     }
   }
 }
+
 </script>
 
 <style>

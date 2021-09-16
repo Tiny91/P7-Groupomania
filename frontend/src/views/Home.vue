@@ -1,19 +1,15 @@
 <template>
-  <div class='home'>
-    <img alt="Groupomania"  src='../assets/groupomania.png' />
-    <h1> Bienvenue sur le reseau social Groupomania ! </h1>
-    <div class="inscription">
-      <h3>Vous n'êtes pas encore inscrit?</h3>
-      <router-link to ='./SignUp'><button type="submit" class="btn"> c'est ici !</button></router-link>
-    </div>
-  </div>
-  <div id='login'>
+  <div class='home md-4 jumbotron'>
+    <img alt="Groupomania"  src='../assets/groupomania.png' /><br/>
+    <h1> Bienvenue sur le réseau social Groupomania ! </h1>
+    <div id='login'>
     <Login/>
+    </div>
   </div>
 </template>
 
 <script>
-import Login from '../components/Login.vue'
+import Login from '../components/users/Login.vue'
 export default {
   components: {
     Login
@@ -23,12 +19,6 @@ export default {
 </script>
 
 <style scoped>
-.inscription{
-  background-color: rgb(222, 222, 224);
-  margin-left: 150px;
-  margin-right: 150px;
-  padding: 10px
-}
 input {
   height: 20px;
   margin: 10px;

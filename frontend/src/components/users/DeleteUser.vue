@@ -1,6 +1,6 @@
 <template>
 <form @submit.prevent='sup' class="jumbotron">
-<h6> Etes-vous sur de vouloir supprimer ce post?
+<h6> Etes-vous sur de vouloir supprimer votre compte?
 </h6>
 <button type='submit' class="btn btn-danger">Suppression</button>
 <div v-show="isInvalid" class="text-danger">
@@ -12,19 +12,19 @@
 <script>
 import router from '../../router'
 export default {
-  name: 'DeletePost',
+  name: 'DeleteUser',
   data () {
     return {
-      post: {},
+      user: {},
       isInvalid: false,
       errorMessage: ''
     }
   },
   methods: {
     sup () {
-      if (localStorage.getItem('PostUserId') === localStorage.getItem('UserId') || localStorage.getItem('Admin') === 'true') {
-        const id = localStorage.getItem('PostId')
-        fetch(`http://localhost:3000/api/posts/${id}`, {
+      if (localStorage.getItem('UserId') || localStorage.getItem('Admin') === 'true') {
+        const id = localStorage.getItem('UserId')
+        fetch(`http://localhost:3000/api/users/${id}`, {
           method: 'DELETE',
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -42,10 +42,10 @@ export default {
               this.errorMessage = text.error
             })
           })
-        router.push({ path: 'Posts' })
+        router.push({ path: 'home' })
       } else {
         this.isInvalid = true
-        this.errorMessage = 'vous n êtes pas autorisé à supprimer ce post'
+        this.errorMessage = 'vous n êtes pas autorisé à supprimer ce compte'
       }
     }
   }

@@ -1,31 +1,53 @@
 <template>
     <!-- <img alt="Groupomania"  src='../assets/groupomania.png' /> -->
-  <div class="card text-center" style="width: 30rem" >
+  <div class="card text-center" style="width: 30rem">
     <div class="card-body">
       <h4 class="card-title">{{post.title}}</h4>
       <p class="card-text">{{post.content}}</p>
-      <a href="#" class="card-link">commentaires</a><br/>
-    <router-link to ='/ModifyPost'>Modifier</router-link>
-    <router-link to ='/DeletePost'>supprimer</router-link>
+      <div v-if="id === userId ">
+        <a href="#" @click="modifier">Modifier</a>
+        <a href="#" @click="supprimer"> supprimer </a>
+      </div>
+      <div>
+        <router-link to ='/CommentsByPost'> Commentaires </router-link>
+        <ModifyPost v-show="openMod"></ModifyPost>
+        <DeletePost v-show="openSup"></DeletePost>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import DeletePost from '../components/posts/DeletePost.vue'
+import ModifyPost from '../components/posts/ModifyPost.vue'
 export default {
+  components: { DeletePost, ModifyPost },
   data () {
     return {
-      post: {}
+      post: {},
+      openSup: false,
+      openMod: false
     }
   },
   created () {
-    const id = localStorage.getItem('id')
+    const userId = localStorage.getItem('UserId')
+    const id = localStorage.getItem('PostId')
     fetch(`http://localhost:3000/api/posts/${id}`,
       {
         headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
       })
       .then(response => response.json())
       .then(response => { this.post = response })
+  },
+  methods: {
+    modifier () {
+      this.openMod = true
+      this.openSup = false
+    },
+    supprimer () {
+      this.openSup = true
+      this.openMod = false
+    }
   }
 }
 </script>

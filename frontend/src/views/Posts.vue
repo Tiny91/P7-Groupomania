@@ -1,20 +1,22 @@
 <template>
     <img alt="Groupomania"  src='../assets/groupomania.png' />
+    <div><CreatePost></CreatePost></div>
     <Post v-for="post of posts"
     :key="post.id"
     :id="post.id"
     :title="post.title"
     :content="post.content"
-    :media="post.media"
+    :UserId="post.UserId"
     ></Post>
 </template>
 
 <script>
-
+import CreatePost from '../components/posts/CreatePost.vue'
 import Post from '../components/posts/Post.vue'
 export default {
   components: {
-    Post
+    Post,
+    CreatePost
   },
   data () {
     return {

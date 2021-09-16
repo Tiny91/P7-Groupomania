@@ -1,22 +1,28 @@
 <template>
   <form @submit.prevent='login' class="jumbotron">
-    <p>
+    <div  class="md-3">
       <label for="pseudo">Votre pseudo: </label>
       <input id="pseudo" v-model="pseudo" type="text" name="pseudo" />
-    </p>
-    <p>
+    </div>
+    <div  class="md-3">
       <label for="password">Votre mot de passe: </label>
       <input id="password" v-model="password" type="text" name="password" />
-    </p>
-    <button class="btn" type="submit" >Valider</button>
-  </form>
-  <div v-show="isInvalid" >
+    </div>
+    <button class="btn btn-info" type="submit" >Valider</button>
+    <div v-show="isInvalid" class="text-danger" >
             {{errorMessage}}
-  </div>
+    </div>
+    <div>
+      <p><em>Pas encore inscrit ?</em>
+        <router-link to ='./SignUp'><button type="submit" class="btn"> cliquez ici !</button></router-link>
+      </p>
+    </div>
+  </form>
+
 </template>
 
 <script>
-import router from '../router'
+import router from '../../router'
 export default {
   name: 'Login',
   data () {
@@ -53,9 +59,11 @@ export default {
             })
           })
           .then((auth) => {
+            console.log(auth)
             localStorage.setItem('pseudo', (auth.pseudo))
-            localStorage.setItem('userId', (auth.userId))
+            localStorage.setItem('UserId', (auth.userId))
             localStorage.setItem('token', (auth.token))
+            localStorage.setItem('Admin', (auth.admin))
             router.push({ path: 'Posts' })
           })
       } else {
@@ -78,7 +86,6 @@ button {
   height: 30px;
   width: 170px;
   padding: 5px 15px;
-  background-color: rgb(211, 211, 243);
   border-radius:15px
 }
 </style>

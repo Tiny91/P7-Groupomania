@@ -1,18 +1,20 @@
 <template>
-  <form @submit="signup">
-    <p>
+  <form @submit="signup" class="jumbotron">
+    <div  class="md-3">
       <label for="pseudo">Votre pseudo: </label>
-      <input id="pseudo" v-model="pseudo" type="text" name="pseudo" />
-    </p>
-    <p>
+      <input id="pseudo" v-model="pseudo" type="text" name="pseudo" class="form-control"/>
+    </div>
+    <div  class="md-3">
       <label for="email">Votre email: </label>
-      <input id="email" v-model="email" type="text" name="email" />
-    </p>
-    <p>
+      <input id="email" v-model="email" type="text" name="email" class="form-control" />
+    </div>
+    <div  class="md-3">
       <label for="password">Votre mot de passe: </label>
-      <input id="password" v-model="password" type="text" name="password" />
-    </p>
-    <button type="submit" class="btn">Envoyer</button>
+      <input id="password" v-model="password" type="text" name="password" class="form-control" />
+    </div>
+    <div>
+    <button type="submit" class="btn btn-info">Envoyer</button>
+    </div>
   </form>
 </template>
 
@@ -62,7 +64,6 @@ button {
   height: 30px;
   width: 170px;
   padding: 5px 15px;
-  background-color: rgb(211, 211, 243);
   border-radius:15px
 }
 </style>

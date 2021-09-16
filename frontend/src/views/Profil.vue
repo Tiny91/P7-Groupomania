@@ -1,60 +1,46 @@
 <template>
   <div>
-    <h3>Mon actualité</h3>
-    <Post v-for="post of posts"
-    :key="post.id"
-    :title="post.title"
-    :content="post.content"
-    >
-    </Post>
-    <div>
-        <CreatePost></CreatePost>
+    <h2> votre compte </h2>
+    <div class="card text-center" style="width: 30rem">
+    <div class="card-body">
+      <p class="card-title">{{user.pseudo}}</p>
+      <p class="card-text">{{user.email}}</p>
+      <router-link to = '../components/users/DeleteUser'> Supprimer votre profil</router-link>
+      </div>
     </div>
   </div>
 
 </template>
 
 <script>
-import CreatePost from '../components/posts/CreatePost.vue'
-import Post from '../components/posts/Post.vue'
+import router from '../router'
 export default {
   components: {
-    Post,
-    CreatePost
+
   },
   data () {
     return {
-      posts: []
+      user: {}
     }
   },
   created () {
-    const id = localStorage.getItem('userId')
-    fetch(`http://localhost:3000/api/all/${id}`,
-      {
-        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
-      })
-      .then(response => response.json())
-      .then(response => { this.posts = response })
+    if (localStorage.getItem('Admin') === 'false') {
+      const id = localStorage.getItem('UserId')
+      fetch(`http://localhost:3000/api/users/${id}`,
+        {
+          headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
+        })
+        .then(response => response.json())
+        .then(response => { this.user = response })
+    } else {
+      router.push({ path: 'Admin' })
+    }
   }
+
 }
 
 </script>
 
-<style lang="scss" scoped>
-.card{
-    margin-top: 20px;
-    padding-top: 20px;
-    background-color: rgb(232, 232, 240);
-    }
-img{
-    max-height: 300px;
-}
-h4{
-    color: rgb(97, 99, 231) ;
-}
-p{
-    margin-left: 50px;
-    margin-right :20px;
-}
+<style>
 
 </style>
