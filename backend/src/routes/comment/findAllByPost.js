@@ -2,7 +2,7 @@ const { Comment } = require('../../sequelize')
 const auth = require ('../../middleware/auth')
   
  module.exports = (app) => {
-    app.get('/api/comments/all/:id', auth, (req, res) => {
+    app.get('/api/comments/post/:id', auth, (req, res) => {
     Comment.findAll({where: {PostId: req.params.id}})
         .then(postComments => {
         res.json(postComments)

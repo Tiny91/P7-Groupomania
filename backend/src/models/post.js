@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
         },
-        media: {
+        pseudo: {
         type: DataTypes.STRING,
-        allowNull: true     
-        },    
+        allowNull: false            
+        }
     }, {
         timestamps: true,
         createdAt: 'published',

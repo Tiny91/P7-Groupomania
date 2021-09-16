@@ -2,8 +2,8 @@ const { Post } = require('../../sequelize')
 const auth = require ('../../middleware/auth')
   
  module.exports = (app) => {
-    app.get('/api/all/:id', auth, (req, res) => {
-    Post.findAll({where: {UserId: req.params.id}})
+    app.get('/api/posts/user/:id', auth, (req, res) => {
+    Post.findAll({where: {pseudo: req.params.id}})
         .then(userPosts => {
         res.json(userPosts)
         })

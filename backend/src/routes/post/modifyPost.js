@@ -10,7 +10,7 @@ module.exports = (app) => {
       res.json({ message})
     })
     .catch(error => {
-      const message =' post non ajouté, réessayez plus tard'
+      const message =' post non modifié, réessayez plus tard'
       res.status(500).json({message, data:error})
     })
   })  
