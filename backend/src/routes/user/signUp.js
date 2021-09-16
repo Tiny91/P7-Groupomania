@@ -1,8 +1,9 @@
 const bcrypt = require ('bcrypt')
 const { User } = require ('../../sequelize')
+const pwdValid = require ('../../middleware/pwdValid')
 
 module.exports = (app) => {
-  app.post('/api/signup', (req,res) => {
+  app.post('/api/signup',pwdValid, (req,res) => {
     bcrypt.hash(req.body.password,10)
     .then(hash => {
       User.create({

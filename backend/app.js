@@ -2,8 +2,9 @@ const express = require('express');
 const sequelize = require('./src/sequelize');
 const app = express();
 const cors = require('cors');
-const path = require ('path');
+const helmet = require ('helmet');
 
+app.use (helmet());
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors());
