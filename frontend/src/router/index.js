@@ -46,19 +46,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "DeleteUser" */ '../components/users/DeleteUser.vue')
   },
   {
-    path: '/DeletePost',
-    name: 'DeletePost',
-    component: () => import(/* webpackChunkName: "DeletePost" */ '../components/posts/DeletePost.vue')
-  },
-  {
-    path: '/ModifyPost',
-    name: 'ModifyPost',
-    component: () => import(/* webpackChunkName: "ModifyPost" */ '../components/posts/ModifyPost.vue')
-  },
-  {
-    path: '/addComment',
-    name: 'addComment',
-    component: () => import(/* webpackChunkName: "addComment" */ '../components/Comments/AddComment.vue')
+    path: '/DeleteUser/:id',
+    name: 'DeleteUser/:id',
+    component: () => import(/* webpackChunkName: "DeleteUser" */ '../components/users/DeleteUser.vue')
   },
   {
     path: '/OnePost',
@@ -69,7 +59,33 @@ const routes = [
     path: '/OnePost/:id',
     name: 'OnePost/:id',
     component: () => import(/* webpackChunkName: "OnePost" */ '../views/OnePost.vue')
+  },
+  // {
+  //   path: '/CommentsByPost',
+  //   name: 'CommentsByPost',
+  //   component: () => import(/* webpackChunkName: "CommentsByPost" */ '../views/CommentsByPost.vue')
+  // },
+  {
+    path: '/CommentsByPost/:id',
+    name: 'CommentsByPost/:id',
+    component: () => import(/* webpackChunkName: "CommentsByPost" */ '../views/CommentsByPost.vue')
+  },
+  {
+    path: '/DeleteComment',
+    name: 'DeleteComment',
+    component: () => import('../components/Comments/DeleteComment.vue')
+  },
+  {
+    path: '/DeleteComment/:id',
+    name: 'DeleteComment/:id',
+    component: () => import(/* webpackChunkName: "DeleteComment" */ '../components/Comments/DeleteComment.vue')
+  },
+  {
+    path: '/ModifyComment/:id',
+    name: 'ModifyComment/:id',
+    component: () => import(/* webpackChunkName: "ModifyComment" */ '../views/ModifyComment.vue')
   }
+
 ]
 
 const router = createRouter({

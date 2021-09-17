@@ -1,6 +1,6 @@
 <template>
 <form @submit.prevent='sup' class="jumbotron">
-<h6> Etes-vous sur de vouloir supprimer votre compte?
+<h6> Etes-vous sur de vouloir supprimer ce profil ?
 </h6>
 <button type='submit' class="btn btn-danger">Suppression</button>
 <div v-show="isInvalid" class="text-danger">

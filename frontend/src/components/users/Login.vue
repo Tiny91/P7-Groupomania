@@ -6,7 +6,7 @@
     </div>
     <div  class="md-3">
       <label for="password">Votre mot de passe: </label>
-      <input id="password" v-model="password" type="text" name="password" />
+      <input id="password" v-model="password" type="password" name="password" />
     </div>
     <button class="btn btn-info" type="submit" >Valider</button>
     <div v-show="isInvalid" class="text-danger" >

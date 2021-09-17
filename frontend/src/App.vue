@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/"> <img src="./assets/icon.png" id="logo" ></router-link> |
-    <router-link to="/posts">  Articles</router-link> |
+    <router-link to="/posts">  Publications </router-link> |
     <router-link to="/Profil"> Profil - Administration </router-link> |
     <router-link to="/deconnect"> Se déconnecter</router-link>
   </div>

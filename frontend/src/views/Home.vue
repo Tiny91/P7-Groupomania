@@ -2,10 +2,11 @@
   <div class='home md-4 jumbotron'>
     <img alt="Groupomania"  src='../assets/groupomania.png' /><br/>
     <h1> Bienvenue sur le réseau social Groupomania ! </h1>
+    <h2> Connectez-vous pour découvrir toutes les publications </h2>
+  </div>
     <div id='login'>
     <Login/>
     </div>
-  </div>
 </template>
 
 <script>
@@ -15,7 +16,6 @@ export default {
     Login
   }
 }
-
 </script>
 
 <style scoped>

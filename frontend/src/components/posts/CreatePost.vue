@@ -1,15 +1,14 @@
 <template>
   <div class="block-post">
-    <h3>Créer un post</h3>
     <form @submit="create" class=" col-5 jumbotron">
       <p class="col-auto">
-        <label for="title">title </label>
+        <label for="title">titre </label>
         <input id="title" v-model="title" type="text" name="title" class="form-control"
          />
       </p>
       <p class="col-auto">
-        <label for="content">content </label>
-        <input id="content" v-model="content" type="text" name="content" class="form-control" rows="3" />
+        <label for="content">Publication </label>
+        <textarea id="content" v-model="content" type="text" name="content" class="form-control" rows="5" />
       </p>
       <button type="submit">Envoyer</button>
     </form>
@@ -24,7 +23,8 @@ export default {
     return {
       title: '',
       content: '',
-      UserId: ''
+      UserId: '',
+      pseudo: ''
     }
   },
   methods: {
@@ -36,6 +36,7 @@ export default {
         this.post = {
           content: this.content,
           title: this.title,
+          pseudo: localStorage.getItem('pseudo'),
           UserId: localStorage.getItem('UserId')
         }
         fetch('http://localhost:3000/api/posts', {
@@ -49,7 +50,7 @@ export default {
           .then(res => res.json())
           .then(() => console.log(`article ${this.title} créé`))
       }
-      router.push({ path: 'Posts' })
+      router.go()
     }
   }
 }
