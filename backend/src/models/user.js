@@ -7,13 +7,12 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true
         },
         pseudo : {
-        type: DataTypes.STRING,
-        unique: {msg: "ce pseudo est déjà utilisé"},
-        allowNull: false 
+        type: DataTypes.STRING,        
+        allowNull: false, 
+        unique: true
         },
         email: {
         type: DataTypes.STRING,
-        unique: {msg: "cet email est déjà utilisé"},
         allowNull: false
         },
         password: {
