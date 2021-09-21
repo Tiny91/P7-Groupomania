@@ -1,45 +1,52 @@
 <template>
   <form @submit="signup" class="jumbotron">
-    <div  class="md-3">
-      <label for="pseudo">Votre pseudo: </label>
-      <input id="pseudo" v-model="pseudo" type="text" name="pseudo" class="form-control"/>
+    <h2> Créez votre profil </h2>
+    <div >
+      <label for="pseudo">Votre pseudo </label> <br/>
+      <input id="pseudo" v-model="pseudo" type="text" name="pseudo"/>
     </div>
     <div  class="md-3">
-      <label for="email">Votre email: </label>
-      <input id="email" v-model="email" type="text" name="email" class="form-control" />
+      <label for="email">Votre adresse mail </label> <br/>
+      <input id="email" v-model="email" type="text" name="email" />
     </div>
     <div  class="md-3">
-      <label for="password">Votre mot de passe: </label>
-      <input id="password" v-model="password" type="text" name="password" class="form-control" />
+      <label for="password">mot de passe* </label> <br/>
+      <input id="password" v-model="password" type="password" name="password" /><br/>
+      <p class="text-muted"><em>*doit contenir au minimum 6 caractères dont 1 majuscule, 1 minuscule et 1 chiffre</em></p>
     </div>
     <div>
-    <button type="submit" class="btn btn-info">Envoyer</button>
+    <button type="submit">Enregistrer</button>
+    </div>
+    <div v-show="isInvalid" class="text-danger" >
+            {{errorMessage}}
     </div>
   </form>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'SignUp',
   data () {
     return {
       pseudo: '',
       email: '',
-      password: ''
+      password: '',
+      errorMessage: '',
+      isInvalid: false
     }
   },
   methods: {
     signup: function (e) {
       e.preventDefault()
       if (this.pseudo === '' || this.password === '' || this.email === '') {
-        console.log('champs requis')
+        console.log('champs obligatoires')
       } else {
         this.user = {
           pseudo: this.pseudo,
           email: this.email,
           password: this.password
         }
-        fetch('http://localhost:3000/api/signup', {
+        fetch('http://localhost:3000/api/signUp', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -48,6 +55,9 @@ export default {
         })
           .then(res => res.json())
           .then(() => console.log(`user ${this.pseudo} créé`))
+          .catch((error) => {
+            console.log(error)
+          })
       }
     }
   }
@@ -55,11 +65,6 @@ export default {
 </script>
 
 <style>
-input {
-  height: 10px;
-  margin: 10px;
-  padding: 10px
-}
 button {
   height: 30px;
   width: 170px;

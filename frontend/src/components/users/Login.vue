@@ -1,23 +1,23 @@
 <template>
-  <form @submit.prevent='login' class="jumbotron">
-    <div  class="md-3">
-      <label for="pseudo">Votre pseudo: </label>
+<div class="jumbotron">
+  <form @submit.prevent='login'>
+    <div>
+      <label for="pseudo">Votre pseudo </label><br/>
       <input id="pseudo" v-model="pseudo" type="text" name="pseudo" />
     </div>
-    <div  class="md-3">
-      <label for="password">Votre mot de passe: </label>
+    <div>
+      <label for="password">Votre mot de passe </label><br/>
       <input id="password" v-model="password" type="password" name="password" />
     </div>
-    <button class="btn btn-info" type="submit" >Valider</button>
+    <button  type="submit" >Valider</button>
     <div v-show="isInvalid" class="text-danger" >
             {{errorMessage}}
     </div>
-    <div>
-      <p><em>Pas encore inscrit ?</em>
-        <router-link to ='./SignUp'><button type="submit" class="btn"> cliquez ici !</button></router-link>
-      </p>
-    </div>
-  </form>
+    </form>
+</div>
+    <div class='signup'>
+        <router-link to ='./SignUp'><button type="submit" class="btn" ><em> pas encore inscrit ?</em></button></router-link>
+        </div>
 
 </template>
 
@@ -76,16 +76,20 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style >
 input {
-  height: 10px;
-  margin: 10px;
-  padding: 10px
-}
-button {
   height: 30px;
-  width: 170px;
-  padding: 5px 15px;
+}
+label {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-style: italic;
+}
+.btn {
+  margin: 15px;
+  width: 200px;
+  background-color: #ffd7d7;
   border-radius:15px
 }
+
 </style>
