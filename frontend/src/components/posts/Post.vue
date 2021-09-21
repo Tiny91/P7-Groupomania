@@ -1,14 +1,15 @@
 <template>
-    <div class="card-cart-container">
-        <div class="card text-center w-50 ">
-          <div class="card-header"> publié le: {{published}}</div>
+    <div class="container">
+        <div class=" mx-auto card text-center w-50 ">
+          <div class="card-header"> publié le: {{formatedDate}}  par {{pseudo}} </div>
           <div class="card-body">
             <router-link :to='`/OnePost/${id}`'>
             <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">{{content}}</p>
             </router-link>
+            <p class="card-text">{{content}}</p>
+          </div>
+          <div>
             <router-link :to='`/CommentsByPost/${id}`'>Commentaires</router-link>
-            <div class="card-footer text-muted">auteur: {{pseudo}}</div>
           </div>
         </div>
     </div>
@@ -38,27 +39,39 @@ export default {
       required: true
     },
     published: {
-      type: String,
+      type: Date,
       required: true
+    }
+  },
+  computed: {
+    // conversion date de publication
+    formatedDate () {
+      const published = new Date(this.published)
+      return `${published.getDate()}/${published.getMonth()}/${published.getFullYear()}`
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .card{
-    margin-top: 20px;
-    padding-top: 20px;
-    background-color: rgb(232, 232, 240);
+    margin-top:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(255, 215, 215, 0.1);
+    border-radius: 15px;
+    box-shadow: 3px 3px 1px #ffd7d7;
+
+    .card-header{
+      background-color: rgba(255, 215, 215)
     }
-img{
-    max-height: 300px;
+    a{
+    color: #fd2d01 ;
+    }
+
+    h5{
+    color: #fd2d01 ;
+    }
 }
-h4{
-    color: rgb(97, 99, 231) ;
-}
-p{
-    margin-left: 50px;
-    margin-right :20px;
-}
+
 </style>

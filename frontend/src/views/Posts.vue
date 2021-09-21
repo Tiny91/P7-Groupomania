@@ -1,10 +1,13 @@
 <template>
-      <div><button @click="btncreate">Ajouter un post</button></div>
-      <form class="jumbotron" v-show="open">
-        <h6> Ecrire une publication</h6>
+  <div class="jumbotron">
+    <img alt="logo Groupomania"  src='../assets/icon-left-font-monochrome-white.png' />
+    <h2> Toutes les actualités </h2>
+  </div>
+      <div><button @click="btncreate" class="btn">Publier un article</button></div>
+      <form v-show="open">
         <CreatePost></CreatePost>
     </form>
-    <div class="card-cart-container">
+    <div class="container">
       <Post v-for="post of posts.slice().reverse() "
       :key="post.id"
       :id="post.id"
@@ -34,7 +37,7 @@ export default {
   },
   methods: {
     btncreate () {
-      this.open = true
+      this.open = !this.open
     }
   },
   created () {
@@ -52,3 +55,19 @@ export default {
 }
 
 </script>
+
+<style lang="scss" scoped>
+.jumbotron{
+  background-color: #0b1c39;
+  height: 260px;
+  color: white;
+  img {
+    width: 200px;
+    margin-top:0px
+  }
+}
+.btn{
+  background-color:white;
+  border: 3px solid #0b1c39
+}
+</style>

@@ -1,18 +1,15 @@
 <template>
-  <div class="block-post">
-    <form @submit="create" class=" col-5 jumbotron">
+    <form @submit="create" class=" mx-auto col-5 ">
       <p class="col-auto">
         <label for="title">titre </label>
-        <input id="title" v-model="title" type="text" name="title" class="form-control"
-         />
+        <input id="title" v-model="title" type="text" name="title" />
       </p>
       <p class="col-auto">
         <label for="content">Publication </label>
         <textarea id="content" v-model="content" type="text" name="content" class="form-control" rows="5" />
       </p>
-      <button type="submit">Envoyer</button>
+      <button type="submit">Enregistrer</button>
     </form>
-  </div>
 </template>
 
 <script>
@@ -58,15 +55,5 @@ export default {
 </script>
 
 <style>
-input {
-  height: 20px;
-  margin: 10px;
-  padding: 10px
-}
-button {
-  height: 30px;
-  padding: 5px 15px;
-  background-color: rgb(214, 214, 238);
-  border-radius:15px
-}
+
 </style>
