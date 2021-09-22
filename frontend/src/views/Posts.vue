@@ -1,14 +1,14 @@
 <template>
-  <div class="jumbotron">
+  <div class=" jumbotron">
     <img alt="logo Groupomania"  src='../assets/icon-left-font-monochrome-white.png' />
-    <h2> Toutes les actualités </h2>
+    <h1> Toutes les actualités </h1>
   </div>
-      <div><button @click="btncreate" class="btn">Publier un article</button></div>
-      <form v-show="open">
-        <CreatePost></CreatePost>
-    </form>
-    <div class="container">
-      <Post v-for="post of posts.slice().reverse() "
+  <button @click="btncreate" class="btn">Publier un article</button>
+  <form v-show="open">
+    <CreatePost></CreatePost>
+  </form>
+  <div class="container">
+    <Post v-for="post of posts.slice().reverse() "
       :key="post.id"
       :id="post.id"
       :title="post.title"
@@ -16,8 +16,8 @@
       :pseudo="post.pseudo"
       :UserId="post.UserId"
       :published="post.published">
-      </Post>
-    </div>
+    </Post>
+  </div>
 </template>
 
 <script>
@@ -63,7 +63,7 @@ export default {
   color: white;
   img {
     width: 200px;
-    margin-top:0px
+    margin-top:-50px
   }
 }
 .btn{

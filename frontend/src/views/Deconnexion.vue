@@ -1,7 +1,12 @@
 <template>
-  <div class="deconnect">
-    <h1> A bientôt !</h1><br/>
-    <router-link to='/'> retour à l'accueil </router-link>
+  <div class=" jumbotron">
+    <img alt="logo Groupomania"  src='../assets/icon-left-font-monochrome-white.png' />
+    <h1> A bientôt ! </h1>
+  </div>
+  <div>
+    <hr/>
+    <router-link to='/'> Retour à l'accueil </router-link>
+    <hr/>
   </div>
 </template>
 
@@ -12,3 +17,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.jumbotron{
+  background-color: #0b1c39;
+  height: 260px;
+  color: white;
+  img {
+    width: 200px;
+    margin-top:-50px
+  }
+}
+</style>

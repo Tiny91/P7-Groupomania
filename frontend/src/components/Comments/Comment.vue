@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
-      <div class="comment text-center mx-auto col-4">
-        <div ><em>{{pseudo}}: </em>
+  <div class="container">
+    <div class="comment text-center mx-auto col-4">
+      <div ><em>{{pseudo}}: </em>
         <p>{{content}}</p>
-        </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>

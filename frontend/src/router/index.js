@@ -5,35 +5,48 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem('token')) next({ path: '/Posts' })
+      else next()
+    }
   },
   {
     path: '/deconnect',
     name: 'Deconnexion',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "deconnect" */ '../views/Deconnexion.vue')
   },
   {
-    path: '/posts',
+    path: '/Posts',
     name: 'Posts',
     component: () => import(/* webpackChunkName: "posts" */ '../views/Posts.vue')
   },
   {
     path: '/Profil',
     name: 'Profil',
-    component: () => import(/* webpackChunkName: "profil" */ '../views/Profil.vue')
+    component: () => import(/* webpackChunkName: "profil" */ '../views/Profil.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!localStorage.getItem('token')) next({ path: '/' })
+      else next()
+    }
+  },
+  {
+    path: '/Profil/:id',
+    name: 'Profil/:id',
+    component: () => import(/* webpackChunkName: "profil" */ '../views/Profil.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!localStorage.getItem('token')) next({ path: '/' })
+      else next()
+    }
   },
   {
     path: '/Admin',
     name: 'Admin',
-    component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue')
-  },
-  {
-    path: '/CommentsByPost',
-    name: 'CommentsByPost',
-    component: () => import(/* webpackChunkName: "CommentsByPost" */ '../views/CommentsByPost.vue')
+    component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue'),
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem('Admin') === false) next({ path: '/Profil' })
+      else next()
+    }
   },
   {
     path: '/SignUp',
@@ -60,30 +73,35 @@ const routes = [
     name: 'OnePost/:id',
     component: () => import(/* webpackChunkName: "OnePost" */ '../views/OnePost.vue')
   },
-  // {
-  //   path: '/CommentsByPost',
-  //   name: 'CommentsByPost',
-  //   component: () => import(/* webpackChunkName: "CommentsByPost" */ '../views/CommentsByPost.vue')
-  // },
+  {
+    path: '/findPostsByUser/:id',
+    name: 'findPostsByUser/:id',
+    component: () => import(/* webpackChunkName: "findPostsByUser" */ '../components/posts/findPostsByUser.vue')
+  },
   {
     path: '/CommentsByPost/:id',
     name: 'CommentsByPost/:id',
     component: () => import(/* webpackChunkName: "CommentsByPost" */ '../views/CommentsByPost.vue')
   },
   {
+    path: '/CommentsByPost',
+    name: 'CommentsByPost',
+    component: () => import(/* webpackChunkName: "CommentsByPost" */ '../views/CommentsByPost.vue')
+  },
+  {
     path: '/DeleteComment',
     name: 'DeleteComment',
-    component: () => import('../components/Comments/DeleteComment.vue')
+    component: () => import('../components/comments/DeleteComment.vue')
   },
   {
     path: '/DeleteComment/:id',
     name: 'DeleteComment/:id',
-    component: () => import(/* webpackChunkName: "DeleteComment" */ '../components/Comments/DeleteComment.vue')
+    component: () => import(/* webpackChunkName: "DeleteComment" */ '../components/comments/DeleteComment.vue')
   },
   {
     path: '/ModifyComment/:id',
     name: 'ModifyComment/:id',
-    component: () => import(/* webpackChunkName: "ModifyComment" */ '../views/ModifyComment.vue')
+    component: () => import(/* webpackChunkName: "ModifyComment" */ '../components/comments/ModifyComment.vue')
   }
 
 ]

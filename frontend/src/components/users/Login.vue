@@ -1,23 +1,21 @@
 <template>
-<div class="jumbotron">
-  <form @submit.prevent='login'>
-    <div>
-      <label for="pseudo">Votre pseudo </label><br/>
-      <input id="pseudo" v-model="pseudo" type="text" name="pseudo" />
-    </div>
-    <div>
-      <label for="password">Votre mot de passe </label><br/>
-      <input id="password" v-model="password" type="password" name="password" />
-    </div>
-    <button  type="submit" >Valider</button>
-    <div v-show="isInvalid" class="text-danger" >
-            {{errorMessage}}
-    </div>
+  <div class="jumbotron">
+    <form @submit.prevent='login'>
+      <div>
+        <label for="pseudo">Votre pseudo </label><br/>
+        <input id="pseudo" v-model="pseudo" type="text" name="pseudo" />
+      </div>
+      <div>
+        <label for="password">Votre mot de passe </label><br/>
+        <input id="password" v-model="password" type="password" name="password" />
+      </div>
+      <button  type="submit" >Valider</button>
+      <div v-show="isInvalid" class="text-danger" >{{errorMessage}}</div>
     </form>
-</div>
-    <div class='signup'>
-        <router-link to ='./SignUp'><button type="submit" class="btn" ><em> pas encore inscrit ?</em></button></router-link>
-        </div>
+  </div>
+  <div class='signup'>
+    <router-link to ='./SignUp'><button type="submit" class="btn" ><em> Pas encore inscrit ?</em></button></router-link>
+  </div>
 
 </template>
 

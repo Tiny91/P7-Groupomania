@@ -1,51 +1,51 @@
 <template>
+  <div class="jumbotron">
+    <img alt="logo Groupomania"  src='../assets/icon-left-font-monochrome-white.png' />
+    <h1> Votre profil </h1>
+  </div>
   <div>
-    <h2> votre compte </h2>
-      <div v-for="user of users"
+    <User v-for="user of users"
       :key="user.id"
       :id="user.id"
       :pseudo="user.pseudo"
-      :email="user.email">
-        <div class="card text-center" style="width: 30rem">
-          <div class="card-body">
-          <p class="card-title">{{user.pseudo}}</p>
-          <p class="card-text">{{user.email}}</p>
-          <router-link to = '../components/users/DeleteUser'> Supprimer votre profil</router-link>
-          </div>
-        </div>
-      </div>
+      :email="user.email"
+      :createdAt="user.createdAt">
+    </User>
   </div>
 </template>
 
 <script>
-import router from '../router'
+import User from '../components/users/User.vue'
 export default {
-  components: {
-
-  },
+  components: { User },
   data () {
     return {
       users: []
     }
   },
   created () {
-    if (localStorage.getItem('Admin') === 'false') {
-      const id = localStorage.getItem('pseudo')
-      fetch(`http://localhost:3000/api/users/${id}`,
-        {
-          headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
-        })
-        .then(response => response.json())
-        .then(response => { this.users = response })
-    } else {
-      router.push({ path: 'Admin' })
-    }
+    const id = localStorage.getItem('pseudo')
+    fetch(`http://localhost:3000/api/users/${id}`,
+      {
+        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
+      })
+      .then(response => response.json())
+      .then(response => { this.users = response })
   }
 
 }
 
 </script>
 
-<style>
+<style lang="scss" scoped>
+.jumbotron{
+  background-color: #0b1c39;
+  height: 200px;
+  color: white;
+  img {
+    width: 130px;
+    margin-top:0px
+  }
+}
 
 </style>

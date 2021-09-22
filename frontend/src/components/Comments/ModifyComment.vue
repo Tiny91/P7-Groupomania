@@ -8,9 +8,6 @@
       <textarea type="text" v-model="content" name="{{content}}"/>
       </p>
       <button type="submit">ok</button>
-      <div v-show="isInvalid" class="text-danger" >
-            {{errorMessage}}
-      </div>
     </form>
   </div>
 </template>
@@ -22,9 +19,7 @@ export default {
   data () {
     return {
       comment: [],
-      id: this.$route.params.id,
-      isInvalid: '',
-      errorMessage: ''
+      id: this.$route.params.id
     }
   },
   methods: {
@@ -43,7 +38,7 @@ export default {
         body: JSON.stringify(this.comment)
       })
         .then(res => res.json())
-        .then(() => console.log(`commentaire de ${this.pseudo} modifié`))
+        .then(() => alert('commentaire modifié'))
       this.$router.replace({ name: 'Posts' })
     }
   },

@@ -17,21 +17,17 @@
         <textarea id="content" type="text" v-model="content" name="{{content}}" class="form-control" rows="5" />
       </p>
       <button type="submit">enregistrer la modification</button>
-      <div v-show="isInvalid" class="text-danger" >
-          {{errorMessage}}
-      </div>
+      <div v-show="isInvalid" class="text-danger" >{{errorMessage}}</div>
     </form>
     <!-- suppression du post -->
     <form class="jumbotron  mx-auto col-5" v-show="openSup" @submit.prevent='sup' >
       <h6> Confirmez vous la suppression de cette publication ?</h6>
-      <button type='submit' class="btn-danger">Suppression</button>
       <p> Les commentaires seront également supprimés </p>
-      <div v-show="isInvalid" class="text-danger">
-          {{errorMessage}}
-      </div>
+      <router-link to='/Posts'><button type='submit' class="btn-info">Non</button></router-link>
+      <button type='submit' class="btn-danger">Suppression</button>
+      <div v-show="isInvalid" class="text-danger">{{errorMessage}}</div>
     </form>
   </div>
-
 </template>
 
 <script>
@@ -107,7 +103,7 @@ export default {
           body: JSON.stringify(this.post)
         })
           .then(res => res.json())
-          .then(() => console.log(`article ${this.title} modifié`))
+          .then(() => alert(`Article "${this.title}" modifié`))
         this.$router.replace({ name: 'Posts' })
       }
     }

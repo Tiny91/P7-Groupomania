@@ -1,15 +1,15 @@
 <template>
-    <form @submit="create" class=" mx-auto col-5 ">
-      <p class="col-auto">
-        <label for="title">titre </label>
-        <input id="title" v-model="title" type="text" name="title" />
-      </p>
-      <p class="col-auto">
-        <label for="content">Publication </label>
-        <textarea id="content" v-model="content" type="text" name="content" class="form-control" rows="5" />
-      </p>
-      <button type="submit">Enregistrer</button>
-    </form>
+  <form @submit="create" class=" mx-auto col-5 ">
+    <p class="col-auto">
+      <label for="title">titre </label>
+      <input id="title" v-model="title" type="text" name="title" />
+    </p>
+    <p class="col-auto">
+      <label for="content">Publication </label>
+      <textarea id="content" v-model="content" type="text" name="content" class="form-control" rows="5" />
+    </p>
+    <button type="submit">Enregistrer</button>
+  </form>
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
           body: JSON.stringify(this.post)
         })
           .then(res => res.json())
-          .then(() => console.log(`article ${this.title} créé`))
+          .then(() => alert(`Article "${this.title}" créé`))
       }
       router.go()
     }

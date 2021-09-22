@@ -1,16 +1,13 @@
 <template>
-  <div class="container">
-    <div class="card mx-auto text-center" style="width:15rem;">
-      <div class="card-header"> {{pseudo}} </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{email}}</li>
-        <li class="list-group-item">créé le {{formatedDate}}</li>
-      </ul>
-        <div class="card-footer">
-          <router-link :to='`/findPostsByUser/${pseudo}`' > Voir les posts </router-link><br/>
-          <button> Supprimer tous les posts </button>
-          <router-link :to='`/DeleteUser/${pseudo}`'>Supprimer le profil</router-link>
-        </div>
+  <div class=" card mx-auto text-center" style="width:15rem;">
+    <div class="card-header"> {{pseudo}} </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{email}}</li>
+      <li class="list-group-item">créé le {{formatedDate}}</li>
+    </ul>
+    <div class="card-footer">
+      <router-link :to='`/findPostsByUser/${pseudo}`' > Voir les posts </router-link><br/>
+      <router-link :to='`/DeleteUser/${pseudo}`'>Supprimer posts/profil</router-link>
     </div>
   </div>
 </template>
