@@ -20,7 +20,7 @@ module.exports = (app) => {
           userId: user.id,          
           admin: user.isAdmin,
           token: jwt.sign(
-            {userId : user.id},`${process.env.PRIVATEKEY}`,{expiresIn: "6h"}
+            {userId : user.id, admin: user.isAdmin},`${process.env.PRIVATEKEY}`,{expiresIn: "6h"}
             )
         });
       })

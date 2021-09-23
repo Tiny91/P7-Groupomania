@@ -1,8 +1,9 @@
 const { User } = require('../../sequelize')
 const auth = require ('../../middleware/auth')
+const admin = require ('../../middleware/admin')
   
  module.exports = (app) => {
-    app.get('/api/users', auth,  (req, res) => {
+    app.get('/api/users', auth, admin, (req, res) => {
     User.findAll()
         .then(users => {
         res.json(users)

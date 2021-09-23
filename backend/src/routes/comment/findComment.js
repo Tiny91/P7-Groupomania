@@ -1,10 +1,9 @@
-const { Comments} = require('../../sequelize')
+const {Comment} = require('../../sequelize')
 const auth = require ('../../middleware/auth')
-const comment = require('../../models/comment')
   
 module.exports = (app) => {
   app.get('/api/comments/:id', auth, (req, res) => {
-    CommentsfindByPk(req.params.id)
+    Comment.findByPk(req.params.id)
     .then(comment => {
       res.json(comment)
       })
