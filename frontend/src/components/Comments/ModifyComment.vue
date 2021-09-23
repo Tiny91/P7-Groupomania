@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import router from '../../router'
 import Comment from './Comment.vue'
 export default {
   components: { Comment },
@@ -38,8 +39,8 @@ export default {
         body: JSON.stringify(this.comment)
       })
         .then(res => res.json())
-        .then(() => alert('commentaire modifié'))
-      this.$router.replace({ name: 'Posts' })
+        .then(() => console.log('commentaire modifié'))
+      router.go(-1)
     }
   },
   created () {

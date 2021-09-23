@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import router from '../../router'
 import Comment from './Comment.vue'
 export default {
   components: { Comment },
@@ -34,8 +35,9 @@ export default {
         }
       })
         .then(res => res.json())
-        .then(() => alert('commentaire supprimé'))
-      this.$router.replace({ name: 'Posts' })
+        .then(() => console.log('commentaire supprimé'))
+
+      router.go(-1)
 
         .catch(error => {
           error = this.errorMessage

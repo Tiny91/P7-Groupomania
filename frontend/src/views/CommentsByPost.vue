@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import router from '../router'
 import Post from '../components/posts/Post.vue'
 export default {
   components: { Post },
@@ -79,9 +80,9 @@ export default {
           body: JSON.stringify(this.comment)
         })
           .then(res => res.json())
-          .then(() => alert('commentaire ajouté'))
-        this.$router.replace({ name: 'Posts' })
+          .then(() => console.log('commentaire ajouté'))
       }
+      router.go()
     }
   }
 }

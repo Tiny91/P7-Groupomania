@@ -31,20 +31,11 @@ const routes = [
     }
   },
   {
-    path: '/Profil/:id',
-    name: 'Profil/:id',
-    component: () => import(/* webpackChunkName: "profil" */ '../views/Profil.vue'),
-    beforeEnter: (to, from, next) => {
-      if (!localStorage.getItem('token')) next({ path: '/' })
-      else next()
-    }
-  },
-  {
     path: '/Admin',
     name: 'Admin',
     component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue'),
     beforeEnter: (to, from, next) => {
-      if (localStorage.getItem('Admin') === false) next({ path: '/Profil' })
+      if (localStorage.getItem('Admin') === 'false') next({ path: '/Profil' })
       else next()
     }
   },

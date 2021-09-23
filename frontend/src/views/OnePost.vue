@@ -1,10 +1,12 @@
 <template>
 <!-- post selectionné avec modif ou sup si util est auteur du post -->
   <Post v-bind="post"></Post>
-  <div v-if="post.UserId == UserId || Admin === 'true'">
-    <button @click="btnMmodifier" class='btn'>Modifier</button>
-    <button @click="btnSupprimer" class='btn'> supprimer </button>
-  </div>
+    <div v-if="post.UserId == UserId">
+      <button @click="btnMmodifier" class='btn'>Modifier</button>
+    </div>
+    <div v-if="post.UserId == UserId || Admin === 'true'">
+      <button @click="btnSupprimer" class='btn'> supprimer </button>
+    </div>
   <div>
     <!-- modification du post -->
     <form class="jumbotron mx-auto col-5" v-show="openMod" @submit.prevent="modify">

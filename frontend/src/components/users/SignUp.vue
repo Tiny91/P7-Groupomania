@@ -1,5 +1,5 @@
 <template>
-  <form @submit="signup" class="jumbotron">
+  <form @submit.prevent="signup" class="jumbotron">
     <h2> Créez votre profil </h2>
     <div >
       <label for="pseudo">Votre pseudo* </label> <br/>
@@ -36,11 +36,14 @@ export default {
     }
   },
   methods: {
-    signup: function (e) {
-      e.preventDefault()
-      if (this.pseudo === '' || this.password === '' || this.email === '') {
+    signup () {
+      const modEmail = /^[a-zA-Z09.-_]+[@]{1}[a-zA-Z09.-_]+[.]{1}[a-zA-Z]+$/
+      const modPassword = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$/
+      if (!(this.pseudo.length > 3 ||
+      modEmail.test(this.email) ||
+      modPassword.test(this.password))) {
         this.isInvalid = true
-        this.errorMessage = 'Tous les champs doivent être renseignés'
+        this.errorMessage = 'Merci de remplir chaque champ comme indiqué'
       } else {
         this.user = {
           pseudo: this.pseudo,
