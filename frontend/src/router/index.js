@@ -35,6 +35,7 @@ const routes = [
     name: 'Admin',
     component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue'),
     beforeEnter: (to, from, next) => {
+      if (!localStorage.getItem('token')) next({ path: '/' })
       if (localStorage.getItem('Admin') === 'false') next({ path: '/Profil' })
       else next()
     }
