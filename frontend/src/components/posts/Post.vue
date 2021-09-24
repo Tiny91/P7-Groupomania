@@ -4,7 +4,7 @@
           <div class="card-header"> publié le: {{formatedDate}}  par {{pseudo}} </div>
           <div class="card-body">
             <router-link :to='`/OnePost/${id}`'>
-            <h5 class="card-title">{{title}}</h5>
+            <h2 class="card-title">{{title}}</h2>
             </router-link>
             <p class="card-text">{{content}}</p>
           </div>
@@ -69,8 +69,9 @@ export default {
     color: #fd2d01 ;
     }
 
-    h5{
+    h2{
     color: #fd2d01 ;
+    font-size: 1.2em;
     }
 }
 
